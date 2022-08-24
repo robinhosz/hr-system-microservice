@@ -23,7 +23,7 @@ public class UserResourceImpl implements UserResource {
     }
 
     @Override
-    public ResponseEntity<List<User>> findById() {
+    public ResponseEntity<List<User>> findAll() {
         return ResponseEntity.ok().body(userService.findAll());
     }
 }

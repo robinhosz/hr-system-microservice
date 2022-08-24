@@ -1,15 +1,17 @@
-package br.com.rbn.userapi.resources;
+package br.com.rbn.payrollapi.feignClients;
 
-import br.com.rbn.userapi.domain.User;
+import br.com.rbn.payrollapi.domain.User;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-public interface UserResource {
+@FeignClient(name = "user-api", url = "http://localhost:8000")
+public interface UserFeign {
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/api/users/{id}")
     ResponseEntity<User> findById(@PathVariable Long id);
 
     @GetMapping
